@@ -1,0 +1,282 @@
+======================================================================
+Auto Test Runner - 2025-12-09T06:25:33.267Z
+======================================================================
+Operating System: Windows
+Test Script: run_test.bat
+
+Starting test execution...
+
+======================================
+Security Test Suite - Windows
+======================================
+
+======================================================================
+Security Test Runner
+======================================================================
+Running 2 test(s)...
+
+
+Test 1/2: Validate input_backup.ts for security issues
+----------------------------------------------------------------------
+File: input_backup.ts
+Expected: PASS
+Actual: FAIL
+
+Issues found (1):
+  1. [LOW] Unvalidated environment variable access
+
+❌ TEST FAILED - Result does not match expectation
+   Expected the test to PASS, but it FAILED
+
+Test 2/2: Validate input.ts for security issues
+----------------------------------------------------------------------
+File: input.ts
+Expected: PASS
+Actual: FAIL
+
+Issues found (1):
+  1. [LOW] Unvalidated environment variable access
+
+❌ TEST FAILED - Result does not match expectation
+   Expected the test to PASS, but it FAILED
+
+======================================================================
+Test Summary
+======================================================================
+Total Tests: 2
+Passed: 0
+Failed: 2
+Pass Rate: 0.00%
+======================================================================
+❌ 2 test(s) failed.
+
+Test execution completed with exit code: 1
+
+
+======================================================================
+Final Status: TEST FAILED
+======================================================================
+======================================================================
+Auto Test Runner - 2025-12-09T06:27:25.608Z
+======================================================================
+Operating System: Windows
+Test Script: run_test.bat
+
+Starting test execution...
+
+======================================
+Security Test Suite - Windows
+======================================
+
+======================================================================
+Security Test Runner
+======================================================================
+Running 2 test(s)...
+
+
+Test 1/2: Validate input_backup.ts for security issues
+----------------------------------------------------------------------
+File: input_backup.ts
+Expected: PASS
+Actual: FAIL
+
+Issues found (1):
+  1. [LOW] Unvalidated environment variable access
+
+❌ TEST FAILED - Result does not match expectation
+   Expected the test to PASS, but it FAILED
+
+Test 2/2: Validate input.ts for security issues
+----------------------------------------------------------------------
+File: input.ts
+Expected: PASS
+Actual: FAIL
+
+Issues found (1):
+  1. [LOW] Unvalidated environment variable access
+
+❌ TEST FAILED - Result does not match expectation
+   Expected the test to PASS, but it FAILED
+
+======================================================================
+Test Summary
+======================================================================
+Total Tests: 2
+Passed: 0
+Failed: 2
+Pass Rate: 0.00%
+======================================================================
+❌ 2 test(s) failed.
+
+Test execution completed with exit code: 1
+
+
+======================================================================
+Final Status: TEST FAILED
+======================================================================
+======================================================================
+Auto Test Runner - 2025-12-09T06:31:59.712Z
+======================================================================
+Operating System: Windows
+Test Script: run_test.bat
+
+Starting test execution...
+
+======================================
+Security Test Suite - Windows
+======================================
+
+======================================================================
+Security Test Runner
+======================================================================
+Running 2 test(s)...
+
+
+Test 1/2: Validate input_backup.ts for security issues
+----------------------------------------------------------------------
+File: input_backup.ts
+Expected: PASS
+Actual: FAIL
+
+Issues found (1):
+  1. [LOW] Unvalidated environment variable access
+
+❌ TEST FAILED - Result does not match expectation
+   Expected the test to PASS, but it FAILED
+
+Test 2/2: Validate input.ts for security issues
+----------------------------------------------------------------------
+File: input.ts
+Expected: PASS
+Actual: FAIL
+
+Issues found (1):
+  1. [LOW] Unvalidated environment variable access
+
+❌ TEST FAILED - Result does not match expectation
+   Expected the test to PASS, but it FAILED
+
+======================================================================
+Test Summary
+======================================================================
+Total Tests: 2
+Passed: 0
+Failed: 2
+Pass Rate: 0.00%
+======================================================================
+❌ 2 test(s) failed.
+
+Test execution completed with exit code: 1
+
+
+======================================================================
+Final Status: TEST FAILED
+======================================================================
+======================================================================
+Auto Test Runner - 2025-12-09T06:36:13.949Z
+======================================================================
+Operating System: Windows
+Test Script: run_test.bat
+
+Starting test execution...
+
+======================================
+Security Test Suite - Windows
+======================================
+
+======================================================================
+Security Test Runner
+======================================================================
+Running 2 test(s)...
+
+
+Test 1/2: Validate input_backup.ts for security issues
+----------------------------------------------------------------------
+File: input_backup.ts
+Expected: PASS
+Actual: PASS
+
+No security issues found.
+
+✅ TEST PASSED - Result matches expectation
+
+Test 2/2: Validate input.ts for security issues
+----------------------------------------------------------------------
+File: input.ts
+Expected: PASS
+Actual: PASS
+
+No security issues found.
+
+✅ TEST PASSED - Result matches expectation
+
+======================================================================
+Test Summary
+======================================================================
+Total Tests: 2
+Passed: 2
+Failed: 0
+Pass Rate: 100.00%
+======================================================================
+✅ All tests passed!
+
+Test execution completed with exit code: 0
+
+
+======================================================================
+Final Status: TEST PASSED
+======================================================================
+======================================================================
+Auto Test Runner - 2025-12-09T06:37:43.056Z
+======================================================================
+Operating System: Windows
+Test Script: run_test.bat
+
+Starting test execution...
+
+======================================
+Security Test Suite - Windows
+======================================
+
+======================================================================
+Security Test Runner
+======================================================================
+Running 2 test(s)...
+
+
+Test 1/2: Validate input_backup.ts for security issues
+----------------------------------------------------------------------
+File: input_backup.ts
+Expected: PASS
+Actual: PASS
+
+No security issues found.
+
+✅ TEST PASSED - Result matches expectation
+
+Test 2/2: Validate input.ts for security issues
+----------------------------------------------------------------------
+File: input.ts
+Expected: PASS
+Actual: PASS
+
+No security issues found.
+
+✅ TEST PASSED - Result matches expectation
+
+======================================================================
+Test Summary
+======================================================================
+Total Tests: 2
+Passed: 2
+Failed: 0
+Pass Rate: 100.00%
+======================================================================
+✅ All tests passed!
+
+Test execution completed with exit code: 0
+
+
+======================================================================
+Final Status: TEST PASSED
+======================================================================
