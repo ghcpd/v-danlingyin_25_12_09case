@@ -1,0 +1,71 @@
+{
+  "summary": {
+    "total_vulnerabilities": 6,
+    "critical": 3,
+    "high": 2,
+    "medium": 1,
+    "low": 0
+  },
+  "details": [
+    {
+      "id": 1,
+      "file": "input_backup.ts",
+      "line_numbers": [3],
+      "vulnerability_type": "Hardcoded API Key",
+      "severity": "Critical",
+      "description": "A Stripe API key is hardcoded in the source. This allows unauthorized access if the repository is leaked.",
+      "fix_explanation": "Move API keys to environment variables or a secrets manager. Do not commit keys to source control.",
+      "secure_code_snippet": "export function getStripeApiKey(): string { return process.env['STRIPE_API_KEY']!; }"
+    },
+    {
+      "id": 2,
+      "file": "input_backup.ts",
+      "line_numbers": [4],
+      "vulnerability_type": "Hardcoded Database Credentials",
+      "severity": "High",
+      "description": "Database connection string with username and password is hardcoded.",
+      "fix_explanation": "Store DB URI in environment variables and use connection pooling with least privilege credentials.",
+      "secure_code_snippet": "export function getDbUri(): string { return process.env['DB_URI']!; }"
+    },
+    {
+      "id": 3,
+      "file": "input_backup.ts",
+      "line_numbers": [5],
+      "vulnerability_type": "Hardcoded JWT Secret",
+      "severity": "Critical",
+      "description": "A JWT signing secret is hardcoded in source code.",
+      "fix_explanation": "Use environment variables or a KMS; rotate the secret and avoid storing it in source control.",
+      "secure_code_snippet": "export function getJwtSecret(): string { return process.env['JWT_SECRET']!; }"
+    },
+    {
+      "id": 4,
+      "file": "input_backup.ts",
+      "line_numbers": [7,8,9,10],
+      "vulnerability_type": "Private Key Exposed",
+      "severity": "Critical",
+      "description": "A private RSA key is embedded in source code. Exposure of private keys compromises confidentiality and integrity.",
+      "fix_explanation": "Keep private keys in a secure vault or filesystem with tight ACLs; never commit them to source control.",
+      "secure_code_snippet": "export function getPrivateKeyPath(): string { return process.env['PRIVATE_KEY_PATH'] || '/etc/keys/mykey.pem'; }"
+    },
+    {
+      "id": 5,
+      "file": "input_backup.ts",
+      "line_numbers": [12,13],
+      "vulnerability_type": "Hardcoded Admin Credentials",
+      "severity": "High",
+      "description": "Admin username and plaintext password are hardcoded. This is insecure and enables easy compromise.",
+      "fix_explanation": "Use env vars or a secret store; store password hashes and require reset on deployment. Use multi-factor authentication.",
+      "secure_code_snippet": "export function getAdminUser(): string { return process.env['ADMIN_USER']!; }\nexport function getAdminPasswordHash(): string { return process.env['ADMIN_PASSWORD_HASH']!; }"
+    },
+    {
+      "id": 6,
+      "file": "input_backup.ts",
+      "line_numbers": [15,16,17],
+      "vulnerability_type": "Plaintext Password Comparison",
+      "severity": "Medium",
+      "description": "Password comparison is performed directly against a hardcoded string; passwords should be hashed and compared using safe methods.",
+      "fix_explanation": "Store password hashes and compare using constant-time functions. Use PBKDF2, bcrypt, or scrypt.",
+      "secure_code_snippet": "import * as crypto from 'crypto';\nexport function verifyPassword(password:string, storedHash:string): boolean { /* use pbkdf2 and timingSafeEqual */ }"
+    }
+  ]
+}
