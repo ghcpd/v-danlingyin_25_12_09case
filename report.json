@@ -1,0 +1,61 @@
+{
+  "summary": {
+    "total_vulnerabilities": 5,
+    "critical": 0,
+    "high": 2,
+    "medium": 3,
+    "low": 0
+  },
+  "details": [
+    {
+      "id": 1,
+      "file": "input.ts",
+      "line_numbers": [42],
+      "vulnerability_type": "Synchronous PBKDF2 (blocking call)",
+      "severity": "High",
+      "description": "The code uses crypto.pbkdf2Sync which performs a CPU-bound operation on the event loop. This can block the event loop and enable DoS or performance degradation in asynchronous systems.",
+      "fix_explanation": "Replace the synchronous PBKDF2 call with an asynchronous implementation (crypto.pbkdf2) so the event loop is not blocked.",
+      "secure_code_snippet": "// use crypto.pbkdf2 with a Promise wrapper (async) to avoid blocking the event loop"
+    },
+    {
+      "id": 2,
+      "file": "input.ts",
+      "line_numbers": [36,37],
+      "vulnerability_type": "No minimum PBKDF2 iterations / weak hash parameters",
+      "severity": "High",
+      "description": "The password verification did not require a minimum iteration count; a very low iteration value would make password hashes easy to brute force.",
+      "fix_explanation": "Enforce a reasonable minimum iteration count for PBKDF2 (e.g., 100,000) and refuse verification for hashes with fewer iterations.",
+      "secure_code_snippet": "const MIN_PBKDF2_ITERATIONS = 100000; if (iterations < MIN_PBKDF2_ITERATIONS) return false;"
+    },
+    {
+      "id": 3,
+      "file": "input.ts",
+      "line_numbers": [55,60,61],
+      "vulnerability_type": "Username enumeration via timing side-channel",
+      "severity": "Medium",
+      "description": "The login function returned early for mismatched usernames without performing the same expensive password verification, allowing an attacker to distinguish valid usernames by response time.",
+      "fix_explanation": "Always perform password verification or an equivalent delay to make response time independent of whether the username is valid.",
+      "secure_code_snippet": "// ensure verifyPassword is awaited for both valid and invalid usernames to equalize timing\nawait verifyPassword(pass, adminHash); // regardless of user equality"
+    },
+    {
+      "id": 4,
+      "file": "input.ts",
+      "line_numbers": [4,7],
+      "vulnerability_type": "Leaking environment variable names in errors",
+      "severity": "Medium",
+      "description": "getEnv threw an error message containing the name of the missing environment variable which may leak internal configuration details into logs/monitoring/stack traces.",
+      "fix_explanation": "Avoid exposing exact environment variable names in production errors. Provide the detailed name only in development mode.",
+      "secure_code_snippet": "if (!v) { if (process.env.NODE_ENV === 'development') throw new Error(\`Missing required environment variable: ${name}\`); throw new Error('Missing required environment variable'); }"
+    },
+    {
+      "id": 5,
+      "file": "input.ts",
+      "line_numbers": [19,20],
+      "vulnerability_type": "Unsanitized PRIVATE_KEY_PATH (path traversal / unsafe file path)",
+      "severity": "Medium",
+      "description": "getPrivateKeyPath returned raw environment-supplied paths without validation. Callers could be tricked into reading unexpected files if path traversal values are used.",
+      "fix_explanation": "Normalize and validate the path; reject upward-traversal sequences and prefer reading private keys from a secured store or an explicitly allowed base directory.",
+      "secure_code_snippet": "const normalized = path.normalize(p); if (normalized.includes('..')) return undefined; return normalized;"
+    }
+  ]
+}

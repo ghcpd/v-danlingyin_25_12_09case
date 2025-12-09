@@ -1,0 +1,14 @@
+{
+  "timestamp": "2025-12-09T05:12:47.122Z",
+  "duration_ms": 1,
+  "tested_script": "run_test.bat",
+  "final_status": "TEST FAILED"
+}
+{
+  "timestamp": "2025-12-09T05:13:17.220Z",
+  "duration_ms": 359,
+  "tested_script": "run_test.bat",
+  "stdout": "input_backup.ts: OK (expected FAIL)\ninput.ts: OK (expected PASS)\nPASS - no insecure patterns found\n\nResult: 2/2 tests passed (100%)\n",
+  "stderr": "FAIL - insecure patterns found: insecure_sync_pbkdf2, raw_private_key_env_access\n",
+  "final_status": "TEST PASSED"
+}
