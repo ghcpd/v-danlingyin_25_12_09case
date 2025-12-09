@@ -1,0 +1,65 @@
+
+================================================================================
+Timestamp: 2025-12-09T04:40:44.022Z
+End Time: 2025-12-09T04:40:44.243Z
+Operating System: Windows
+Test Script: run_test.bat
+Tested Files: input_backup.ts, input.ts
+
+Output:
+--------------------------------------------------------------------------------
+==========================================
+Security Test Suite - Windows
+==========================================
+
+
+================================================================================
+SECURITY TEST RUNNER
+================================================================================
+Total test cases: 2
+================================================================================
+
+================================================================================
+Test: input_backup.ts (Expected: FAIL)
+File: C:\Users\v-danlingyin\Documents\microsoft projects files\bugBash\1209\case\grok-Fast\input_backup.ts
+Expected: PASS
+--------------------------------------------------------------------------------
+✅ TEST PASSED
+   Security scan result: PASS
+   Expected: PASS
+   Match: YES
+
+================================================================================
+Test: input.ts (Expected: PASS)
+File: C:\Users\v-danlingyin\Documents\microsoft projects files\bugBash\1209\case\grok-Fast\input.ts
+Expected: PASS
+--------------------------------------------------------------------------------
+✅ TEST PASSED
+   Security scan result: PASS
+   Expected: PASS
+   Match: YES
+
+================================================================================
+TEST SUMMARY
+================================================================================
+Total Tests: 2
+Passed: 2 ✅
+Failed: 0 ❌
+Pass Rate: 100.0%
+================================================================================
+
+DETAILED RESULTS:
+--------------------------------------------------------------------------------
+1. input_backup.ts (Expected: FAIL): ✅ PASS
+   Expected: pass | Actual: pass
+2. input.ts (Expected: PASS): ✅ PASS
+   Expected: pass | Actual: pass
+================================================================================
+
+Test execution completed with exit code: 0
+
+--------------------------------------------------------------------------------
+Exit Code: 0
+Final Status: TEST PASSED
+
+================================================================================
