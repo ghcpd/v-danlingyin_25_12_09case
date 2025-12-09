@@ -1,0 +1,52 @@
+{
+  "summary": {
+    "total_vulnerabilities": 3,
+    "critical": 0,
+    "high": 1,
+    "medium": 2,
+    "low": 0
+  },
+  "details": [
+    {
+      "id": 1,
+      "file": "input.ts",
+      "line_numbers": [57],
+      "vulnerability_type": "Brute Force Attack (Missing Rate Limiting)",
+      "severity": "High",
+      "description": "The login function lacks rate limiting mechanisms, allowing attackers to perform unlimited brute force attempts against user credentials.",
+      "fix_explanation": "Added rate limiting with MAX_ATTEMPTS=5 and LOCKOUT_DURATION_MS=15 minutes. Function checkRateLimit() enforces this. Failed attempts are recorded with recordFailedAttempt().",
+      "secure_code_snippet": "function checkRateLimit(user: string): boolean { const now = Date.now(); const attempt = loginAttempts.get(user); if (!attempt) return true; if (now - attempt.timestamp > LOCKOUT_DURATION_MS) { loginAttempts.delete(user); return true; } return attempt.count < MAX_ATTEMPTS; }"
+    },
+    {
+      "id": 2,
+      "file": "input.ts",
+      "line_numbers": [44],
+      "vulnerability_type": "Weak Password Hash Validation",
+      "severity": "Medium",
+      "description": "PBKDF2 iteration count only checks if positive (> 0), but no upper bound or minimum recommended value. Very low iterations make password cracking feasible. No validation of salt or derived key length.",
+      "fix_explanation": "Added validation: iterations must be between 10000 and 1000000 (industry standard). Validate salt length is 32 bytes and derived hash is 64 hex characters. These prevent malformed or weak hash formats.",
+      "secure_code_snippet": "if (!Number.isFinite(iterations) || iterations < 10000 || iterations > 1000000) return false; if (salt.length !== 32) return false; if (derived.length !== 64) return false;"
+    },
+    {
+      "id": 3,
+      "file": "input.ts",
+      "line_numbers": [57],
+      "vulnerability_type": "Missing Input Validation",
+      "severity": "Medium",
+      "description": "The login function accepts user and pass parameters without validation. No checks for null, undefined, type validation, or length limits. Could lead to injection attacks or resource exhaustion.",
+      "fix_explanation": "Added validateLoginInput() function that checks: parameters are non-null strings, username ≤ 256 chars, password ≤ 1024 chars. Prevents type confusion and excessively long inputs that could consume memory.",
+      "secure_code_snippet": "function validateLoginInput(user: string, pass: string): { valid: boolean; error?: string } { if (!user || typeof user !== 'string') return { valid: false, error: 'Invalid username' }; if (user.length > 256 || pass.length > 1024) return { valid: false, error: 'Input too long' }; return { valid: true }; }"
+    }
+  ],
+  "hardcoded_secrets": {
+    "total_found": 0,
+    "details": "No hardcoded secrets detected. All sensitive data is loaded from environment variables (STRIPE_API_KEY, DB_URI, JWT_SECRET, ADMIN_USER, ADMIN_PASSWORD_HASH, PRIVATE_KEY_PATH)."
+  },
+  "notes": [
+    "The code properly uses environment variables for all sensitive credentials.",
+    "Recommendation: Replace PBKDF2 with bcrypt or argon2 for production password hashing.",
+    "Recommendation: Consider implementing distributed rate limiting (Redis) for multi-instance deployments.",
+    "Recommendation: Add comprehensive logging for authentication attempts.",
+    "Recommendation: Implement account lockout notifications to users."
+  ]
+}
